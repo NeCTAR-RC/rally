@@ -129,6 +129,8 @@ class UserGenerator(context.Context):
         # NOTE(rmk): Ugly hack to deal with the fact that Nova Network
         # networks can only be disassociated in an admin context. Discussed
         # with boris-42 before taking this approach [LP-Bug #1350517].
+        # NeCTAR Hack due to cells
+        return
         clients = osclients.Clients(self.endpoint)
         if consts.Service.NOVA not in clients.services().values():
             return
